@@ -1,0 +1,26 @@
+
+<form [formGroup]="f">
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">name</span>
+        </div>
+        <input type="text" aria-label="First name" class="form-control" formControlName="name">
+       
+      </div>
+      <div *ngIf="name!.touched && name!.invalid" class=" alert alert-danger">
+name required
+      </div>
+
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Address</span>
+        </div>
+        <input type="text" aria-label="First name" class="form-control" formControlName="address">
+    
+      </div>
+      <div class="alert alert-danger" *ngIf="address?.errors?.['minlength']">
+minlength 3
+      </div>
+
+      <button class="btn btn-primary" [disabled]="f.invalid" (click)="add()">save</button>
+</form>
